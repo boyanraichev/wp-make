@@ -1,4 +1,4 @@
-install-wp:
+install:
 	@bash scripts/wp-downloads.sh
 	@cd web/
 	@rm -R wp/wp-content/plugins
@@ -7,4 +7,5 @@ install-wp:
 	@cd content
 	@cp -rvf ../wp/wp-content/* .
 	@rm -R wp/wp-content
-	
+	@rm wp/wp-config-sample.php
+	@cp ../wp-config-sample.php wp-config.php
