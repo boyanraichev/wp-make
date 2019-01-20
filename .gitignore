@@ -2,4 +2,12 @@
 /node_modules
 npm-debug.log
 yarn-error.log
+/web/*
+!/web/plugins/
+!/web/themes/
+/web/plugins/*
+/web/themes/*
+!/web/plugins/wp-bang/
+!/web/themes/wp-blank/
+!*/
 .DS_Store
