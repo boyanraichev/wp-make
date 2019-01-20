@@ -1,9 +1,5 @@
 #!/bin/bash
 
-cd ../web
-mkdir wp
-cd wp
-
 #Download the latest copy of WordPress into a directory, grab all the files in the new /wordpress folder
 #Put all the files in the current directory, remove the now empty /wordpress directory
 #Remove the tarball 
