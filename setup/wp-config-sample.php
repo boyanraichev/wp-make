@@ -85,11 +85,26 @@ define('WP_POST_REVISIONS', 1);
 define('AUTOSAVE_INTERVAL', 6000);
 
 // setting the site url here, instead of the admin panel, allows you to setup different environments with the same database
-define('WP_SITEURL', 'http://' . $_SERVER['HTTP_HOST'] . '/');
+define('WP_SITEURL', 'http://' . $_SERVER['HTTP_HOST'] . '/wp/');
 define('WP_HOME', 'http://' . $_SERVER['HTTP_HOST'] . '/');
 
 // remove the code editor from the WP admin
 define( 'DISALLOW_FILE_EDIT', true );
+
+// rename the content folder for avoiding some automated attacks
+define('WP_CONTENT_FOLDERNAME', 'content');
+define('WP_CONTENT_DIR', dirname( __FILE__ ) . '/' . WP_CONTENT_FOLDERNAME) ;
+define('WP_CONTENT_URL', WP_HOME . WP_CONTENT_FOLDERNAME);
+
+define( 'WP_PLUGIN_DIR', dirname( __FILE__ ) . '/' . 'plugins' );
+define( 'WP_PLUGIN_URL', WP_HOME . 'plugins' );
+
+
+// this is needed in some environments - if you have issues with FTP (installing plugins etc), uncomment this
+// define('FS_METHOD', 'direct');
+
+// this is usually needed with the Bitnami stack, if you have trouble updating wordpress set a temp folder manually
+// define('WP_TEMP_DIR', '/Applications/mampstack-7.1.15-0/apps/xxxxxxx/tmp');
 
 /* That's all, stop editing! Happy blogging. */
 
@@ -98,21 +113,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	define( 'ABSPATH', dirname( __FILE__ ) . '/' );
 }
 
-// rename the content folder for avoiding some automated attacks
-define('WP_CONTENT_FOLDERNAME', 'content');
-define('WP_CONTENT_DIR', ABSPATH . WP_CONTENT_FOLDERNAME) ;
-define('WP_CONTENT_URL', WP_SITEURL . WP_CONTENT_FOLDERNAME);
-
-
 /** Sets up WordPress vars and included files. */
 require_once( ABSPATH . 'wp-settings.php' );
 
-// this is needed in some environments - if you have issues with FTP (installing plugins etc), uncomment this
-// define('FS_METHOD', 'direct');
-
-// this is usually needed with the Bitnami stack, if you have trouble updating wordpress set a temp folder manually
-// define('WP_TEMP_DIR', '/Applications/mampstack-7.1.15-0/apps/xxxxxxx/tmp');
-
+// move themes folder outside content
+register_theme_directory( dirname( __FILE__ ) . '/' . 'themes' );
 
 //  Disable pingback.ping xmlrpc method to prevent Wordpress from participating in DDoS attacks
 //  More info at: https://docs.bitnami.com/?page=apps&name=wordpress&section=how-to-re-enable-the-xml-rpc-pingback-feature

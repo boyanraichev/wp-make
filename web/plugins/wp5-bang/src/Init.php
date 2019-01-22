@@ -25,12 +25,8 @@ class Init {
 		// login through ajax
 		add_action( 'wp_ajax_nopriv_ajax_login', [$this,'ajaxLogin'] );
 		
-		// remove admin bar for some users
-		if (!current_user_can('administrator') AND !current_user_can('see_backend')) {
-			show_admin_bar(false);
-			// Disable the Admin Panel and admin bar, leave access to Admin Ajax for Ajax calls
-			add_action('admin_init', [$this,'blockAdminAccess'], 1);	
-		}
+		// Disable the Admin Panel and admin bar, leave access to Admin Ajax for Ajax calls
+		add_action('admin_init', [$this,'blockAdminAccess'], 1);
 		
 	}
 	
@@ -38,15 +34,23 @@ class Init {
 	* Block admin access
 	*/	
 	public function blockAdminAccess() {
+
+	    if (!current_user_can('administrator') AND !current_user_can('see_backend')) {
+
+			show_admin_bar(false);
+					    		
+		    $isAjax = (defined('DOING_AJAX') && true === DOING_AJAX) ? true : false;
 		
-	    $isAjax = (defined('DOING_AJAX') && true === DOING_AJAX) ? true : false;
-	
-	    if(!$isAjax) {
-		    // modify roles here
-	        $enable = ( (current_user_can('administrator') OR current_user_can('see_backend')) ? true : false );
-		    if (strpos(strtolower($_SERVER['REQUEST_URI']), '/wp-admin') !== false && ($enable == false)) {
-		        wp_redirect(get_option('siteurl'));
-		    }
+		    if(!$isAjax) {
+		    
+		    	// Disable the Admin Panel and admin bar, leave access to Admin Ajax for Ajax calls
+			    // modify roles here
+		        $enable = ( (current_user_can('administrator') OR current_user_can('see_backend')) ? true : false );
+			    if (strpos(strtolower($_SERVER['REQUEST_URI']), '/wp-admin') !== false && ($enable == false)) {
+			        wp_redirect(get_option('siteurl'));
+			    }
+			}
+			
 	    }
 	    
 	}
