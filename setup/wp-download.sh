@@ -8,7 +8,7 @@
 curl -OL http://wordpress.org/latest.tar.gz
 
 #De-compress the tarball
-tar -zxvf latest.tar.gz
+tar -zxf latest.tar.gz
 
 #Copy everything from the new WordPress Directory into current directory
 cp -rvf wordpress/* .
