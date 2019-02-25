@@ -1,4 +1,10 @@
 <?php 
+// make install
+	- setup theme name everywhere
+// make plugin-stable
+	- get current plugin versions and save to json
+	- display on plugin management page if plugin ver differs than stable version
+		
 // social buttons?
 	
 // slider package
