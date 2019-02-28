@@ -1,6 +1,8 @@
 <?php 
 // make install
-	- setup theme name everywhere
+	- setup theme name everywhere with var input
+	- if meta is installed, publish assets? or test with composer post package install
+		
 // make plugin-stable
 	- get current plugin versions and save to json
 	- display on plugin management page if plugin ver differs than stable version
