@@ -43,6 +43,10 @@ Running `make install` will download latest WordPress version and then change th
 6. Replace `wp5-blank` with your theme slug/name in all occurances in folder /web/themes/wp5-blank, including the folder name
 7. Run the WordPress installer by opening the project in your browser
 
+## Compiling
+
+If you want to use assets compiling, you have Laravel mix predefined. Run `npm install` to install the needed packages. You can then use the different commands available in package.json, like `npm run dev` or `npm watch`. Depending on wheather you will compile your assets or not, you have to set up the correct links in the theme Init.php file.
+
 ### Using GIT with WordPress
 
 The package includes a .gitignore file that will set up a GIT + composer environment for WordPress without interfering with native WordPress functionality. WordPress files are gitignored, so update WordPress through the built-in updater. All plugins and themes, are gitignored as well, with specific exclusion of the ones you develop yourself.
