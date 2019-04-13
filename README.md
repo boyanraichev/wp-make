@@ -1,4 +1,4 @@
-# wp5-make
+# wp-make
 
 A WordPress 5 development boilerplate for custom projects with plugin and theme development. Replace `wp5-blank` with your theme slug and start building a WordPress site with a custom theme!
 

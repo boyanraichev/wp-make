@@ -1,8 +1,8 @@
 {
-    "name": "boyo/wp5-env",
+    "name": "boyo/wp-make",
     "description": "A WordPress 5 blank development environment + theme boilerplate",
     "type": "project",
-    "homepage": "https://github.com/boyanraichev/wp5-env",
+    "homepage": "https://github.com/boyanraichev/wp-make",
     "license": "MIT",
     "authors": [
         {
