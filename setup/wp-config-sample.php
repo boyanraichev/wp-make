@@ -85,8 +85,8 @@ define('WP_POST_REVISIONS', 1);
 define('AUTOSAVE_INTERVAL', 6000);
 
 // setting the site url here, instead of the admin panel, allows you to setup different environments with the same database
-define('WP_SITEURL', 'http://' . $_SERVER['HTTP_HOST'] . '/wp/');
-define('WP_HOME', 'http://' . $_SERVER['HTTP_HOST'] . '/');
+define('WP_SITEURL', 'http://' . $_SERVER['HTTP_HOST'] . '/wp');
+define('WP_HOME', 'http://' . $_SERVER['HTTP_HOST'] );
 
 // remove the code editor from the WP admin
 define( 'DISALLOW_FILE_EDIT', true );
