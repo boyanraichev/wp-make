@@ -19,7 +19,8 @@
     "classnames": "^2.2.6",
     "vue-template-compiler": "^2.6.8"
     "laravel-mix": "^4.0.14",
-    "tat-js": "^1.0.1",
+    "tat-js": "^1.0.8",
+    "tat-js-cookie": "^1.0.1",
     "axios": "^0.16.2"
   }
 }
