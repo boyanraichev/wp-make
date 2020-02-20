@@ -73,7 +73,7 @@ class Init {
     	/*
 	    * jpeg quality
 	    */
-		add_filter( 'jpeg_quality', create_function( '', 'return 90;' ) );				
+		add_filter( 'jpeg_quality', function() { return 90; } );				
 		
     }
     
