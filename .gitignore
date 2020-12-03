@@ -7,7 +7,7 @@ yarn-error.log
 !/web/themes/
 /web/plugins/*
 /web/themes/*
-!/web/plugins/wp-bang/
-!/web/themes/wp-blank/
+!/web/plugins/wp5-bang/
+!/web/themes/wp5-blank/
 .DS_Store
 .nova

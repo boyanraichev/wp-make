@@ -1,0 +1,183 @@
+
+html {
+	width: 100%; 
+	min-width: 320px;
+	height: 100%; 
+	margin: 0; 
+	padding: 0; 
+	box-sizing: border-box; 
+	overflow-x: hidden;
+	-ms-text-size-adjust: 100%; 
+	-webkit-text-size-adjust: 100%; 
+	font-size: 100%;
+	background: var(--white, #FFFFFF);
+	
+	&.no-scroll,
+	&.no-scroll body { 
+		overflow: hidden;  
+	}
+
+}
+
+body { 
+	width: 100%; 
+	min-width: 320px;
+	min-height: 100%; 
+	margin: 0; 
+	padding: 0; 
+	box-sizing: border-box;
+	color: var(--black, #333333); 
+	font-family: var(--font, sans-serif); 
+	font-size: var(--font_size, 1rem); 
+	line-height: var(--font_line, 1.5rem); 
+	font-weight: 400;
+	overflow-x: hidden;
+	text-rendering: optimizeLegibility; 
+	text-rendering: geometricPrecision;
+
+	&.mobile { 
+		text-rendering: optimizeSpeed; 
+	}
+	
+	&.modal-open { 
+		overflow: hidden; 
+	}
+		
+	&.mobile.modal-open { 
+		position: fixed; 
+	}
+}
+
+div, span, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, a, del, em, img, small, strong, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, figure, footer, header, hgroup, menu, nav, section, time, main {
+	margin: 0; 
+	padding: 0; 
+	border: 0; 
+	outline: 0; 
+	background: transparent; 
+	box-sizing: border-box; 
+}									
+
+div, article, aside, footer, header, hgroup, main, menu, nav, section, ul, li { 
+	display: block; 
+}
+
+*[hidden] { 
+	display: none; 
+}
+
+a { 
+	text-decoration: none; 
+	color: #000;	
+	transition: color 0.2s ease;
+	
+	&:hover,
+	&:focus {
+		color: #000; 
+		text-decoration: none; 
+		outline: 0;
+	}
+	
+	&:active { 
+		outline: 0; 
+	}
+	
+	&:link { 
+		-webkit-tap-highlight-color: #000; 
+	} 
+}
+
+p { 
+	margin: 0 0 1.5rem 0; 
+	overflow-wrap: break-word; 
+	word-wrap: break-word; 
+
+	&:last-child { 
+		margin-bottom: 0; 
+	}
+	
+	a:hover { 
+		text-decoration: underline; 
+	}
+
+}
+
+small { 
+	font-size: 0.8rem; 
+	line-height: var(--font_line, 1.5rem); 
+}
+
+del { 
+	text-decoration: line-through; 
+}
+
+b, 
+strong, 
+th { 
+	font-weight: 700; 
+}
+
+ul { list-style: none; }
+
+hr { 
+	height: 0px; 
+	border: 0; 
+	border-top: 1px solid var(--black, #333333);
+	margin: var(--font_line, 1.5rem) 0; 
+	padding: 0; 
+}
+
+img { 
+	border: 0; 
+	max-width: 100%; 
+	height: auto; 
+}
+
+img, 
+a img,
+td, 
+td img { 
+	vertical-align: middle; 
+} 
+
+select, 
+input, 
+textarea, 
+button { 
+	margin: 0; 
+	box-sizing: border-box; 
+	border: none;
+	outline: none;
+	color: var(--black, #333333); 
+	font-family: var(--font, sans-serif);
+	font-size: var(--font_size, 1rem); 
+	line-height: var(--font_line, 1.5rem);
+	font-weight: 400;
+}
+
+input[type="search"] { 
+	-webkit-appearance: textfield; 
+}
+input[type="submit"], 
+button { 
+	-webkit-appearance: none; 
+}
+input[type="radio"] { 
+	vertical-align: text-bottom; 
+}
+input[type="checkbox"] { 
+	vertical-align: middle; 
+}
+
+button { 
+	width: auto; 
+	overflow: visible; 
+}
+
+::-moz-focus-inner { 
+	padding: 0; 
+	border: 0; 
+}
+
+:focus { 
+	outline: 0; 
+}
