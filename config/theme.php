@@ -39,7 +39,7 @@ return [
     */
     
 	'maintenance_mode' => false,
-    'maintenance_mode_text' = '',
+    'maintenance_mode_text' => '',
 	
 	/*
     |--------------------------------------------------------------------------
