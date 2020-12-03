@@ -9,7 +9,8 @@ class Init {
 	private static $_instance = null;	
 	
 	// Don't load more than one instance of the class
-	public static function instance() {
+	public static function instance() 
+	{
 		if ( null == self::$_instance ) {
             self::$_instance = new self();
         }
@@ -19,7 +20,8 @@ class Init {
     /**
      * Constructor
      */
-    public function __construct() {
+    public function __construct() 
+	{
     	
     	// after theme setup
     	add_action( 'after_setup_theme', [ $this, 'themeSetup' ] ); 
@@ -39,23 +41,35 @@ class Init {
     	// register admin only scripts
 		add_action( 'admin_enqueue_scripts', [ $this, 'adminScripts' ] );
 
+		// add browser classes
+		add_filter( 'body_class', [$this,'bodyClass']);
+		
+		// allow svg
+		add_filter('upload_mimes', [$this,'mimeTypes']);
 		
     }
     
     /**
      * Add theme support
      */
-    public function themeSetup() {
+    public function themeSetup() 
+	{
 	    
 	    // setup language if not in english
 		load_theme_textdomain( 'wp5-blank', get_template_directory().'/languages' );		
 		
+		// gutenberg custom color palette
+		// add_theme_support( 'editor-color-palette', [] );
+		
+		// gutenberg custom font sizes
+		// add_theme_support( 'editor-font-sizes', [] );
 	}
 	
     /**
      * Basic Theme settings
      */
-    public function themeInit() {
+    public function themeInit() 
+	{
     
 		/*
 		* register all nav menus for your site here
@@ -68,7 +82,7 @@ class Init {
 		*  set thumbnail sizes
 		*/
 		// set_post_thumbnail_size( 400, 400 ); // default Post Thumbnail dimensions  
-		// add_image_size( 'slide', 1400, 600, true ); // home page slides
+		// add_image_size( 'slide', 1400, 600, true ); // i.e. home page slides
 
     	/*
 	    * jpeg quality
@@ -85,14 +99,14 @@ class Init {
 	    
 		wp_register_script(
 	        'wp5-blank-blocks',
-	        get_stylesheet_directory_uri() . '/resources/js/block.js',
-	        [ 'wp-blocks', 'wp-element' ],
+	        get_stylesheet_directory_uri() . '/assets/js/blocks.js',
+			[ 'wp-blocks', 'wp-dom-ready', 'wp-edit-post', 'wp-block-library', 'wp-i18n', 'wp-element', 'wp-data' ],
 	        THEME_VERSION
 	    );
 	    
 		wp_register_style(
 	        'wp5-blank-blocks',
-	        get_stylesheet_directory_uri() . '/resources/js/block.css',
+	        get_stylesheet_directory_uri() . '/assets/css/blocks.css',
 	        [ 'wp-edit-blocks' ],
 	        THEME_VERSION
 	    );
@@ -107,10 +121,11 @@ class Init {
 	/*
 	* Enqueue JS files
 	*/
-	public function scripts() {
+	public function scripts() 
+	{
 		
 		// register polyfill
-		wp_register_script( 'polyfill-io', 'https://cdn.polyfill.io/v2/polyfill.min.js', false, false, false );
+		wp_register_script( 'polyfill-io', 'https://polyfill.io/v3/polyfill.min.js?features=es6%2Ces5%2Cdefault', false, false, false );
 		wp_enqueue_script( 'polyfill-io' );
 		
 		// register theme script
@@ -128,7 +143,10 @@ class Init {
 	/*
 	* Enqueue CSS files
 	*/
-	public function styles() {
+	public function styles() 
+	{
+		
+		// wp_dequeue_style( 'wp-block-library' ); 
 		
 		wp_enqueue_style( 'themecss', get_stylesheet_directory_uri() . '/assets/css/theme.css', [], ( WP_DEBUG ? time() : THEME_VERSION ), 'all' );
 		
@@ -137,11 +155,34 @@ class Init {
 	/*
 	*  Admin scripts for custom blocks etc
 	*/
-	public function adminScripts() {
+	public function adminScripts() 
+	{
 		
 	
 	}
 	
+	/*
+	*  Add to body classes
+	*/
+	public function bodyClass(array $classes) : array
+	{
+		
+		$classes[] = 'js-cookie';	
+					
+		return $classes;
+
+	}
 	
+	/*
+	*  Allow SVG uploads
+	*/
+	public function mimeTypes(array $mimes) : array 
+	{
+		
+		$mimes['svg'] = 'image/svg+xml';
+		
+		return $mimes;
+		
+	}
 	
 }

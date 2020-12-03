@@ -76,7 +76,7 @@ $table_prefix = 'xxx_';
  *
  * @link https://codex.wordpress.org/Debugging_in_WordPress
  */
-define( 'WP_DEBUG', false );
+define('WP_DEBUG', false );
 
 // WP post revisions are filling the database quickly - limit them with a sensible number here or set as false to not save revisions
 define('WP_POST_REVISIONS', 1);

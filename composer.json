@@ -12,8 +12,7 @@
     ],
     "require": {
         "php": ">=7.1.0",
-        "boyo/wp5-bang": ">=0.9.0",
-        "boyo/wp5-bang-meta": ">=0.9.0"
+        "boyo/wp5-bang": ">=1.0.0"
     },
     "repositories": [
         {

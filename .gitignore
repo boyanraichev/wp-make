@@ -10,3 +10,4 @@ yarn-error.log
 !/web/plugins/wp-bang/
 !/web/themes/wp-blank/
 .DS_Store
+.nova

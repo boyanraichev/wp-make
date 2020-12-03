@@ -1,7 +1,7 @@
 <?php 
 /*
 Plugin Name: Bang
-Plugin URI: https://github.com/boyanraichev/wp5-env
+Plugin URI: https://github.com/boyanraichev/wp-make
 Description: Wordress custom development boilerplate
 Version: 1.0
 Author: Boyan Raichev

@@ -1,6 +1,6 @@
 {
   "name": "wp-make",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
   "scripts": {
     "dev": "npm run development",
@@ -15,12 +15,14 @@
     "@babel/preset-react": "^7.0.0",
     "@wordpress/babel-preset-default": "^3.0.2",	 
     "ajv": "^6.10.0",
-    "cross-env": "^5.2.0" 
+    "cross-env": "^5.2.0",
     "classnames": "^2.2.6",
-    "vue-template-compiler": "^2.6.8"
+    "vue-template-compiler": "^2.6.8",
     "laravel-mix": "^4.0.14",
-    "tat-js": "^1.0.8",
+    "postcss-css-variables": "^0.14.0",
+    "tat-css": "1.1.*",
+    "tat-js": "^1.0.26",
     "tat-js-cookie": "^1.0.2",
-    "axios": "^0.16.2"
+    "axios": "^0.21.0"
   }
 }

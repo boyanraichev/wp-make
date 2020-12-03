@@ -1,4 +1,4 @@
-install:
+init:
 	@echo 'downloading wordpress...'
 	@cd web && mkdir wp && cd wp && pwd && bash ../../setup/wp-download.sh
 	@echo 'move content folder...'	
@@ -9,3 +9,9 @@ install:
 	@rm web/wp/wp-config-sample.php
 	@cp setup/wp-config-sample.php web/wp-config.php
 	@cp setup/index.php web/index.php
+	
+install:
+	@echo 'downloading wordpress...'
+	@cd web && mkdir wp && cd wp && pwd && bash ../../setup/wp-download.sh
+	@echo 'delete content folder...'	
+	@rm -R web/wp/wp-content
