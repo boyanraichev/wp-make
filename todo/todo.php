@@ -1,25 +1,20 @@
 <?php 
 // make install
-	- setup theme name everywhere with var input
-	- if meta is installed, publish assets? or test with composer post package install
+	- setup theme name everywhere with var input ? 
 		
 // make plugin-stable
 	- get current plugin versions and save to json
 	- display on plugin management page if plugin ver differs than stable version
 		
-// social buttons?
-	
 // slider package
 	- slider js
 	- block
 
-// seo package
-	- seo.php
-
-// register & lost pass
+// login, register & lost pass sample views
+	- login.php
 	- register.php
 	- lostpassword.php
-	
+	- redirects etc 
 	/* 
 	* LOGIN / REGISTRATION / LOST PASSWORD 
 	*/
@@ -72,12 +67,3 @@
 			}		
 		}
 	}
-
-
-// theme settings
-	settings.php
-
-
-// cookie law 
-	- texts from data atr
-	- separate from tat.js 
