@@ -32,11 +32,24 @@ class Init {
 		
 		// Disable the Admin Panel and admin bar, leave access to Admin Ajax for Ajax calls
 		add_action( 'admin_init', [$this,'blockAdminAccess'], 1);
+		add_action( 'init', [$this,'hideAdminBar'], 1);
 	
 		// theme settings (optional)
 		if (is_admin()) {
 			// $settings = Settings::instance();
 		}	
+	}
+	
+	/*
+	* Hide admin bar
+	*/	
+	public function hideAdminBar() 
+	{
+		if (!current_user_can('administrator') AND !current_user_can('see_backend')) {
+
+			show_admin_bar(false);
+			
+		}
 	}
 	
 	/*
@@ -46,19 +59,17 @@ class Init {
 	{
 		
 		// implement different logic if needed
-	    if (!current_user_can('administrator') AND !current_user_can('see_backend')) {
-
-			show_admin_bar(false);
-					    		
-		    $isAjax = (defined('DOING_AJAX') && true === DOING_AJAX) ? true : false;
+		if (!current_user_can('administrator') AND !current_user_can('see_backend')) {
+								
+			$isAjax = (defined('DOING_AJAX') && true === DOING_AJAX) ? true : false;
 		
-		    if(!$isAjax) {
-			    if (strpos(strtolower($_SERVER['REQUEST_URI']), '/wp-admin') !== false) {
-			        wp_redirect(get_option('siteurl'));
-			    }
+			if(!$isAjax) {
+				if (strpos(strtolower($_SERVER['REQUEST_URI']), '/wp-admin') !== false) {
+					wp_redirect(get_option('home'));
+				}
 			}
 			
-	    }
+		}
 	    
 	}
 	
