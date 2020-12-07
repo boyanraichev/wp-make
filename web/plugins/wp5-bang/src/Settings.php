@@ -5,10 +5,10 @@ if (!defined('ABSPATH')) die;
 
 class Settings {
 
-    /**
-     * Holds the values to be used in the fields callbacks
-     */
-    public $options = [];
+	/**
+	 * Holds the values to be used in the fields callbacks
+	 */
+	public $options = [];
 
 	/** @var The single instance of the class */
 	protected static $_instance = null;	
@@ -16,39 +16,39 @@ class Settings {
 	// Don't load more than one instance of the class
 	public static function instance() {
 		if ( !isset(static::$_instance) ) {
-            static::$_instance = new static;
-        }
-        return static::$_instance;
-    }
+			static::$_instance = new static;
+		}
+		return static::$_instance;
+	}
 
-    /**
-     * Construct
-     */
-    public function __construct() {
-        add_action( 'admin_menu', [ $this, 'add_theme_menu' ] );
-        add_action( 'admin_init', [ $this, 'page_init' ] );
-    }
+	/**
+	 * Construct
+	 */
+	public function __construct() {
+		add_action( 'admin_menu', [ $this, 'add_theme_menu' ] );
+		add_action( 'admin_init', [ $this, 'page_init' ] );
+	}
 
-    /**
-     * Add options page
-     */
-    public function add_theme_menu() {
-        add_theme_page(
-        	__('Theme Settings', 'wp5-bang'), 
-        	__('Theme Settings', 'wp5-bang'), 
-        	'manage_options', 
-        	'wp5bang_options', 
-        	[ $this, 'create_theme_page']
-        );
-    }
+	/**
+	 * Add options page
+	 */
+	public function add_theme_menu() {
+		add_theme_page(
+			__('Theme Settings', 'wp5-bang'), 
+			__('Theme Settings', 'wp5-bang'), 
+			'manage_options', 
+			'wp5bang_options', 
+			[ $this, 'create_theme_page']
+		);
+	}
 
-    /**
-     * Options page callback
-     */
-    public function create_theme_page() {
+	/**
+	 * Options page callback
+	 */
+	public function create_theme_page() {
 
-        ?>
-        <div class="wrap">
+		?>
+		<div class="wrap">
 			<h2><?php _e('Theme Settings', 'wp5-bang'); ?></h2>
 			<!-- Make a call to the WordPress function for rendering errors when settings are saved. -->
 			<?php settings_errors(); ?>
@@ -60,10 +60,11 @@ class Settings {
 			</h2>
 			<!-- Create the form that will be used to render our options -->
 			<form method="post" action="options.php">
-			 	<?php
+				 <?php
 				switch($active_tab) {
 					case 'options':
-					 	$this->options['wp5bang_general_options'] = get_option( 'wp5bang_general_options' );
+						 $this->options['wp5bang_general_options'] = get_option( 'wp5bang_general_options' );
+						$this->options['wp5bang_maintenance'] = get_option( 'wp5bang_maintenance' );
 						settings_fields( 'wp5bang_general_options_group' );
 						do_settings_sections( 'wp5bang_general_options' );
 						break;
@@ -78,17 +79,22 @@ class Settings {
 				?>
 			</form>
 		</div><!-- /.wrap -->
-        <?php
-    }
+		<?php
+	}
 
-    /**
-     * Register and add settings
-     */
-    public function page_init() {    
-    	
+	/**
+	 * Register and add settings
+	 */
+	public function page_init() {    
+		
 		register_setting(
 			'wp5bang_general_options_group',
 			'wp5bang_general_options',
+			[ $this, 'sanitize' ]
+		);
+		register_setting(
+			'wp5bang_general_options_group',
+			'wp5bang_maintenance',
 			[ $this, 'sanitize' ]
 		);
 		register_setting(
@@ -164,36 +170,36 @@ class Settings {
 			]
 		 );
 		 
-    }
+	}
 
-    /**
-     * Sanitize each setting field as needed
-     */
-    public function sanitize( array $input ) : array
+	/**
+	 * Sanitize each setting field as needed
+	 */
+	public function sanitize($input)
 	{ 
-        // do stuff here
-        return $input;
-    }
+		// do stuff here
+		return $input;
+	}
 
-    /** 
-     * Print the Section text
-     */
-    public function empty_section_info() {
-        echo '';
-    }
-    /** 
-     * Prints input type=text options
-     */
-    public function input_text($args) {
-    	$option = $this->extract_option_data($args);
+	/** 
+	 * Print the Section text
+	 */
+	public function empty_section_info() {
+		echo '';
+	}
+	/** 
+	 * Prints input type=text options
+	 */
+	public function input_text($args) {
+		$option = $this->extract_option_data($args);
 		// Render the output
 		echo '<input type="text" id="'. $option['id'] .'" name="'. $option['name'] .'" value="'.stripslashes(esc_attr( $option['value'] )).'" class="regular-text" />';
 		echo ( isset($args['descr']) ? '<br><small><label for="'.$option['id'].'">'. $args['descr'] .'</label></small>' : '' ); 
-    }
-    
-    /** 
-     * Prints textarea options
-     */
+	}
+	
+	/** 
+	 * Prints textarea options
+	 */
 	public function input_textarea($args) {
 		$option = $this->extract_option_data($args);
 		// Render the output
@@ -201,30 +207,30 @@ class Settings {
 		echo ( isset($args['descr']) ? '<br><small><label for="'.$option['id'].'">'. $args['descr'] .'</label></small>' : '' );
 	}
 	
-    /** 
-     * Prints input type=text options
-     */
-    public function input_number($args) {
-    	$option = $this->extract_option_data($args);
-    	$class = ( ( !isset($args['max']) OR $args['max'] > 99999 ) ? 'regular-text' : 'small-text' );
+	/** 
+	 * Prints input type=text options
+	 */
+	public function input_number($args) {
+		$option = $this->extract_option_data($args);
+		$class = ( ( !isset($args['max']) OR $args['max'] > 99999 ) ? 'regular-text' : 'small-text' );
 		// Render the output
 		echo '<input type="number" id="'. $option['id'] .'" name="'. $option['name'] .'" value="'.stripslashes(esc_attr( $option['value'] )).'" min="'.$args['min'].'" max="'.$args['max'].'" step="'.$args['step'].'" class="'.$class.'" />';
 		echo ( isset($args['descr']) ? '<br><small><label for="'.$option['id'].'">'. $args['descr'] .'</label></small>' : '' );
-    }
+	}
 
-    /** 
-     * Prints checkbox options
-     */
-    public function input_checkbox($args) {
-    	$option = $this->extract_option_data($args);
+	/** 
+	 * Prints checkbox options
+	 */
+	public function input_checkbox($args) {
+		$option = $this->extract_option_data($args);
 		// Render the output
 		echo '<label for="'. $option['id'] .'"><input type="checkbox" id="'. $option['id'] .'" name="'. $option['name'] .'" size="20" value="1" '.checked($option['value'],'1',false).' />'. $args['descr'] . '</label>';
-    }
-    
-    /** 
-     * Prints radio options
-     */
-    public function input_radio($args) {
+	}
+	
+	/** 
+	 * Prints radio options
+	 */
+	public function input_radio($args) {
 		$option = $this->extract_option_data($args);
 		$radio_array = $args['options'];
 		// Render the output
@@ -233,11 +239,11 @@ class Settings {
 		}  	
 		echo ( isset($args['descr']) ? '<small><label for="'.$option['id'].'">'. $args['descr'] .'</label></small>' : '' );
 	}
-    
-    /** 
-     * Prepares an $option array with name, id and value for this option
-     */
-    public function extract_option_data($args) {
+	
+	/** 
+	 * Prepares an $option array with name, id and value for this option
+	 */
+	public function extract_option_data($args) {
 		$option = array();
 		if ( !empty($args['key']) ) { 
 			$option['name'] = $args['name'] . '[' . $args['key'] . ']'; 
