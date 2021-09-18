@@ -94,10 +94,10 @@ define( 'DISALLOW_FILE_EDIT', true );
 // rename the content folder for avoiding some automated attacks
 define('WP_CONTENT_FOLDERNAME', 'content');
 define('WP_CONTENT_DIR', dirname( __FILE__ ) . '/' . WP_CONTENT_FOLDERNAME) ;
-define('WP_CONTENT_URL', WP_HOME . WP_CONTENT_FOLDERNAME);
+define('WP_CONTENT_URL', WP_HOME . '/' . WP_CONTENT_FOLDERNAME);
 
 define( 'WP_PLUGIN_DIR', dirname( __FILE__ ) . '/' . 'plugins' );
-define( 'WP_PLUGIN_URL', WP_HOME . 'plugins' );
+define( 'WP_PLUGIN_URL', WP_HOME . '/' . 'plugins' );
 
 
 // this is needed in some environments - if you have issues with FTP (installing plugins etc), uncomment this

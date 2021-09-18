@@ -12,16 +12,12 @@
     ],
     "require": {
         "php": ">=7.1.0",
-        "boyo/wp5-bang": ">=1.0.2"
+        "boyo/wp5-bang": ">=1.1.0"
     },
     "repositories": [
         {
             "type": "vcs",
             "url": "https://github.com/boyanraichev/wp5-bang.git"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/boyanraichev/wp5-bang-meta.git"
         }
     ],
     "autoload": {
