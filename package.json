@@ -12,20 +12,20 @@
     "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
   },
   "devDependencies": {
-    "@babel/preset-react": "^7.9.4",
-    "@wordpress/babel-preset-default": "^4.19.0",
+    "@babel/preset-react": "^7.16.7",
+    "@wordpress/babel-preset-default": "^6.10.0",
     "ajv": "^6.12.6",
-    "axios": "^0.21.0",
-    "classnames": "^2.2.6",
+    "axios": "^0.26.1",
+    "classnames": "^2.3.1",
     "cross-env": "^7.0.3",
     "laravel-mix": "^5.0.9",
     "postcss-css-variables": "^0.17.0",
-    "resolve-url-loader": "^3.1.2",
-    "sass": "^1.29.0",
+    "resolve-url-loader": "^3.1.4",
+    "sass": "^1.51.0",
     "sass-loader": "^10.1.0",
     "tat-css": "1.1.*",
-    "tat-js": "^1.0.26",
+    "tat-js": "^1.0.31",
     "tat-js-cookie": "^1.0.2",
-    "vue-template-compiler": "^2.6.12"
+    "vue-template-compiler": "^2.6.14"
   }
 }
